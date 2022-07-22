@@ -1,0 +1,38 @@
+:root {
+  --c-background-color: black;
+  --c-text-color: white;
+  --animation-ease: cubic-bezier(0.2, 0.9, 0.6, 1);
+
+  --c-gray: rgb(30, 30, 30);
+  --c-accent: rgb(182, 255, 93);
+
+  --z-top-bar: 15;
+
+  /* Back Button */
+  --c-back-button-background-color: var(--c-gray);
+  --c-back-button-text-color: white;
+
+  /* Click Anywhere */
+  --c-ca-text-color: rgb(80, 80, 80);
+  --z-ca: 5;
+
+  /* Error */
+  --c-error-spinner-background-color: white;
+  
+  /* Loading */
+  --c-loading-background-color: rgba(0, 0, 0, 0.8);
+  --c-loading-spin-color: white;
+  --z-loading: 10;
+
+  /* Nickname Input */
+  --c-input-background-color: var(--c-gray);
+  --c-input-text-color: white;
+  --c-input-outline-color: rgba(255, 255, 255, 0.2);
+  
+  /* Nickname History */
+  --c-history-background-color: var(--c-gray);
+  --c-history-text-color: white;
+
+  /* Links */
+  --c-link-text-color: var(--c-accent);
+}
