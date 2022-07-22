@@ -21,16 +21,16 @@ const Layout = ({ children, loading }: LayoutProps): JSX.Element => {
         <Navbar>
           <Link href={'/'}>
             <IconButton
-            type={'button'}>
-              <span className={'material-symbols-outlined'}>arrow_back</span>
-            </IconButton>
+            aria-label={'Go Back'}
+            type={'button'}
+            icon={'/assets/icon/back.svg'} />
           </Link>
           <Search setLoading={setLoadingFromChildren} />
           <Link href={'/help'}>
             <IconButton
-            type={'button'}>
-              <span className={'material-symbols-outlined'}>help</span>
-            </IconButton>
+            aria-label={'Information'}
+            type={'button'}
+            icon={'/assets/icon/info.svg'} />
           </Link>
         </Navbar>
       </NavbarWrapper>

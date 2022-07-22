@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { inputStyles } from '../global'
+import { iconStyles, inputStyles } from '../global'
 
 export const Body = styled.div`
 display: grid;
@@ -96,6 +96,9 @@ max-width: 350px;
 height: 100%;
 `
 
+export interface IconButtonProps {
+  icon: string
+}
 export const IconButton = styled.button`
 display: flex;
 justify-content: center;
@@ -103,6 +106,9 @@ align-items: center;
 
 background-color: var(--c-back-button-background-color);
 color: var(--c-back-button-text-color);
+
+background-image: url(${(props: IconButtonProps) => props.icon});
+${iconStyles}
 
 border: none;
 border-radius: 10px;
@@ -142,4 +148,7 @@ display: block;
 cursor: pointer;
 
 aspect-ratio: 1 / 1;
+
+${iconStyles}
+background-image: url('/assets/icon/search.svg');
 `

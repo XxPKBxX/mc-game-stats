@@ -4,7 +4,8 @@ import { useState, FormEvent, useRef } from 'react'
 import { clearSpecialCharacters } from '../utils/text'
 
 import Layout from '../components/layout'
-import { Form, Search, NicknameInput, Container, SearchIcon, ClickAnywhere } from '../components/home/style'
+import { Form, Search, NicknameInput, Container, ClickAnywhere } from '../components/home/style'
+import Header from '../components/head'
 
 const Home: NextPage = () => {
   const [nickname, setNickname] = useState<string>('')
@@ -22,6 +23,8 @@ const Home: NextPage = () => {
   const ref = useRef<HTMLInputElement>(null)
 
   return (
+    <>
+    <Header />
     <Layout loading={loading}>
       <Container
       onClick={() => ref.current?.focus()}>
@@ -34,14 +37,12 @@ const Home: NextPage = () => {
           ref={ref}
           required
           onChange={(e) => setNickname(clearSpecialCharacters(e.target.value))} />
-          <Search
-          type={'submit'}>
-            <SearchIcon className={'material-symbols-outlined'}>search</SearchIcon>
-          </Search>
+          <Search type={'submit'} />
         </Form>
       </Container>
-    </Layout>
-  )
+      </Layout>
+    </>
+    )
 }
 
 export default Home

@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import { clearSpecialCharacters } from '../../utils/text'
 
 import { SearchInput, SearchSubmit, SearchWrapper } from './style'
-import { SearchIcon } from '../home/style'
 
 export interface SearchProps {
   setLoading: Function
@@ -48,9 +47,7 @@ const Search = ({ setLoading }: SearchProps): JSX.Element => {
       onChange={(e) => setQuery(clearSpecialCharacters(e.target.value))}
       placeholder={'Search User'}
       required />
-      <SearchSubmit>
-        <SearchIcon className={'material-symbols-outlined'}>search</SearchIcon>
-      </SearchSubmit>
+      <SearchSubmit />
     </SearchWrapper>
   )
 }

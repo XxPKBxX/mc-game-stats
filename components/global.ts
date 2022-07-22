@@ -13,3 +13,9 @@ transition: outline 0.2s ease;
 &:hover { outline-width: 3px; }
 &:focus { outline-width: 5px; }
 `
+
+export const iconStyles = css`
+background-position: center center;
+background-size: 60% 60%;
+background-repeat: no-repeat;
+`

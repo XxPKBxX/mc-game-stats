@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { inputStyles } from '../global'
+import { iconStyles, inputStyles } from '../global'
 
 export const Container = styled.div`
 display: flex;
@@ -50,23 +50,9 @@ font-size: 3rem;
 aspect-ratio: 1 / 1;
 
 cursor: pointer;
-`
 
-export const SearchIcon = styled.span`
-display: flex;
-justify-content: center;
-align-items: center;
-
-height: 100%;
-aspect-ratio: 1 / 1;
-
-font-variation-settings:
-'FILL' 0,
-'wght' 700,
-'GRAD' 0,
-'opsz' 48;
-
-font-size: inherit;
+${iconStyles}
+background-image: url('/assets/icon/search.svg');
 `
 
 export const ClickAnywhere = styled.div`
