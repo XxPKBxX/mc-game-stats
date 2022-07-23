@@ -32,6 +32,7 @@
   /* Nickname History */
   --c-history-background-color: var(--c-gray);
   --c-history-text-color: white;
+  --c-history-scrollbar-background-color: rgb(100, 100, 100);
 
   /* Links */
   --c-link-text-color: var(--c-accent);

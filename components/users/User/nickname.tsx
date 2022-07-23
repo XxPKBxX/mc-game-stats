@@ -1,18 +1,20 @@
 import { useUserContext } from '../../../contexts/user'
 
-import { NameWrapper, NicknameWrapper, NicknameHistory, PlayerAvatar } from './style'
+import { NameWrapper, NicknameWrapper, NicknameHistory, PlayerAvatarWrapper, NicknameText, PlayerAvatar } from './style'
 
 const Nickname = (): JSX.Element => {
   const data = useUserContext()
 
   return (
     <NameWrapper>
-      <PlayerAvatar
-      src={`https://mc-heads.net/avatar/${data.player.uuid}/8`}
-      width={50}
-      height={50} />
+      <PlayerAvatarWrapper>
+        <PlayerAvatar
+        src={`https://mc-heads.net/avatar/${data.player.uuid}/8`}
+        width={50}
+        height={50} />
+      </PlayerAvatarWrapper>
       <NicknameWrapper>
-        <span>{data.player.name}</span>
+        <NicknameText>{data.player.name}</NicknameText>
         <NicknameHistory>
           {
             data.player.oldNames?.map((oldNickname, index) => (

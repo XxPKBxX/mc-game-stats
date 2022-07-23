@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import { iconStyles, inputStyles } from '../global'
+import { iconStyles, inputStyles, maxWidth } from '../global'
 
 export const Body = styled.div`
 display: grid;
 grid-template-rows: minmax(500px, 1fr);
 
 width: 100%;
-height: 100vh;
+min-height: 100vh;
 `
 
 export interface LoadingProps {

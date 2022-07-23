@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { maxWidth } from '../global'
 
 export const Container = styled.div`
 display: grid;
@@ -7,7 +8,7 @@ align-items: center;
 grid-template-columns: 1fr 1fr;
 gap: 20px;
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: ${maxWidth}) {
   & {
     grid-template-columns: unset;
     grid-template-rows: 400px 400px;

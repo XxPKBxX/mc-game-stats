@@ -2,8 +2,9 @@ import Image from 'next/image'
 import styled from 'styled-components'
 
 export const UserInfo = styled.div`
-display: flex;
+display: grid;
 gap: 20px;
+grid-template-columns: auto auto;
 justify-content: center;
 align-items: center;
 
@@ -13,14 +14,20 @@ text-align: left;
 export const NameWrapper = styled.div`
 position: relative;
 
-display: flex;
+display: grid;
 gap: 10px;
+grid-template-columns: auto 1fr;
 justify-items: left;
 `
 
-export const PlayerAvatar = styled(Image)`
+export const PlayerAvatarWrapper = styled.div`
 display: block;
 
+width: 50px;
+height: 50px;
+`
+
+export const PlayerAvatar = styled(Image)`
 image-rendering: pixelated;
 border-radius: 5px;
 `
@@ -28,17 +35,31 @@ border-radius: 5px;
 export const NicknameWrapper = styled.span`
 position: relative;
 
-display: flex;
+display: grid;
 align-items: stretch;
 
 font-size: 2rem;
 font-weight: bold;
 
 padding: 5px;
+`
 
-user-select: none;
+export const NicknameText = styled.span`
+position: relative;
 
-cursor: pointer;
+display: block;
+
+overflow-x: scroll;
+overflow-y: hidden;
+white-space: nowrap;
+
+&::-webkit-scrollbar {
+  height: 3px;
+}
+&::-webkit-scrollbar-thumb {
+  background-color: var(--c-history-scrollbar-background-color);
+  border-radius: 100vmax;
+}
 `
 
 export const NicknameHistory = styled.div`

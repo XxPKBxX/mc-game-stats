@@ -1,5 +1,7 @@
 import { css } from 'styled-components'
 
+export const maxWidth = '880px'
+
 export const inputStyles = css`
 padding: 10px;
 border: none;
