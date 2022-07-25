@@ -1,14 +1,32 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+export interface ContainerProps {
+  rainbow?: boolean
+}
 
 export const Container = styled.div`
 display: flex;
 align-items: center;
 gap: 10px;
 
-padding: 10px 100px;
+padding: 10px 20px;
 
 width: 100%;
 height: 100%;
+
+--color: var(--c-text-color);
+
+${(props: ContainerProps) => props.rainbow ? css`
+animation: rainbow-animation 3s 0s infinite forwards linear;
+` : null}
+
+@keyframes rainbow-animation {
+  0%, 100% { --color: var(--c-red); }
+  20% { --color: var(--c-orange); }
+  40% { --color: var(--c-green); }
+  60% { --color: var(--c-blue); }
+  80% { --color: var(--c-purple); }
+}
 `
 
 export const ErrorSpinnerWrapper = styled.div`
@@ -28,7 +46,7 @@ height: 10px;
 
 border-radius: 3px;
 
-background-color: var(--c-error-spinner-background-color);
+background-color: var(--color);
 
 animation: spin-animation 2s 0s infinite forwards var(--animation-ease);
 
@@ -45,6 +63,8 @@ animation: spin-animation 2s 0s infinite forwards var(--animation-ease);
 export const ErrorWrapper = styled.div`
 display: grid;
 gap: 10px;
+
+color: var(--color);
 `
 
 export const ErrorTitle = styled.span`

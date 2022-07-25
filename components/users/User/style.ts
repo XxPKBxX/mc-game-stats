@@ -4,8 +4,8 @@ import styled from 'styled-components'
 export const UserInfo = styled.div`
 display: grid;
 gap: 20px;
-grid-template-columns: auto auto;
-justify-content: center;
+grid-template-rows: auto auto;
+justify-content: left;
 align-items: center;
 
 text-align: left;
@@ -18,6 +18,7 @@ display: grid;
 gap: 10px;
 grid-template-columns: auto 1fr;
 justify-items: left;
+align-items: center;
 `
 
 export const PlayerAvatarWrapper = styled.div`
@@ -36,7 +37,9 @@ export const NicknameWrapper = styled.span`
 position: relative;
 
 display: grid;
-align-items: stretch;
+gap: 10px;
+grid-template-columns: auto auto;
+align-items: center;
 
 font-size: 2rem;
 font-weight: bold;
@@ -48,25 +51,9 @@ export const NicknameText = styled.span`
 position: relative;
 
 display: block;
-
-overflow-x: scroll;
-overflow-y: hidden;
-white-space: nowrap;
-
-&::-webkit-scrollbar {
-  height: 3px;
-}
-&::-webkit-scrollbar-thumb {
-  background-color: var(--c-history-scrollbar-background-color);
-  border-radius: 100vmax;
-}
 `
 
 export const NicknameHistory = styled.div`
-position: absolute;
-top: 100%;
-left: 0;
-
 transition: 0.2s var(--animation-ease);
 transition-property: opacity, transform;
 
@@ -80,6 +67,9 @@ margin: 5px;
 
 background-color: var(--c-history-background-color);
 color: var(--c-history-text-color);
+
+max-height: 170px;
+overflow-y: scroll;
 
 & > span {
   display: block;

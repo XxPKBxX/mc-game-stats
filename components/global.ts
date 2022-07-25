@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const maxWidth = '880px'
 
@@ -20,4 +20,35 @@ export const iconStyles = css`
 background-position: center center;
 background-size: 60% 60%;
 background-repeat: no-repeat;
+`
+
+export const A = styled.a`
+position: relative;
+
+display: inline-block;
+
+color: var(--c-link-text-color);
+
+cursor: pointer;
+
+&::after {
+  content: '';
+
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transform: translateY(-100%);
+
+  display: block;
+
+  width: 100%;
+  height: 3px;
+
+  background-color: var(--c-link-text-color);
+
+  opacity: 0.4;
+  
+  transition: height 0.2s var(--animation-ease);
+}
+&:hover::after { height: 7px; }
 `

@@ -7,29 +7,22 @@ import { UserContext, DEFAULT_VALUE, UserStatsProps } from '../../contexts/user'
 import Layout from '../../components/layout'
 import User from '../../components/users/User'
 import Level from '../../components/users/Level'
-import Header from '../../components/head'
 const Error = dynamic(() => import('../../components/users/Error'))
 
 const UserStats: NextPage<{ data: UserStatsProps }> = ({ data }) => (
   data.error ? (
-    <>
-    <Header title={'Error'} />
-    <Layout>
+    <Layout title={'Error'}>
       <Error error={data.error} />
     </Layout>
-    </>
   ) : (
-    <>
-    <Header title={data.player.name ?? undefined} />
     <UserContext.Provider value={data}>
-      <Layout>
+      <Layout title={data?.player?.name ?? undefined}>
         <Container>
           <User />
           <Level />
         </Container>
       </Layout>
     </UserContext.Provider>
-    </>
   )
 )
 
@@ -50,7 +43,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query: { nickname
   const hypixelResponse = await fetch(`https://api.hypixel.net/player?key=${process.env.API_KEY}&uuid=${id}`)
   const { success, player, ...hypixelData } = await hypixelResponse.json()
 
-  if (success === false) return { props : { data: { ...data, error: hypixelData.cause } } }
+  if (success === false) return { props: { data: { ...data, error: hypixelData.cause } } }
+  if (!player) return { props: { data: { ...data, error: 'Couldn\'t get user stats.' } } }
 
   /*
   We need these:
@@ -63,7 +57,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query: { nickname
   - Playing version v
   - Language v
    */
-
+  
   const {
     displayname,
     knownAliases,
@@ -71,19 +65,18 @@ export const getServerSideProps: GetServerSideProps = async ({ query: { nickname
     networkExp,
     socialMedia,
     userLanguage,
-    stats: {
-      SkyWars: {
-        skywars_experience
-      }
-    },
-    achievements: {
-      bedwars_level,
-    }
+    stats,
+    achievements
   } = player
 
+  if (!knownAliases || knownAliases.length < 1) return { props: { data: { ...data, error: 'User data is broken.' } } }
+
+  const skywars_experience = stats?.SkyWars?.skywars_experience ?? null
+  const bedwars_level = achievements?.bedwars_level ?? 0
+
   const hypixelLevel = getHypixelLevel(networkExp)
-  const skyWarsLevel = getSkyWarsLevel(skywars_experience)
-  
+  const skyWarsLevel = skywars_experience ? getSkyWarsLevel(skywars_experience) : 0
+
   return {
     props: {
       data: {

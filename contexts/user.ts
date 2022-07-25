@@ -10,12 +10,12 @@ export interface UserStatsProps {
     version: string | null
     socialMedia: {
       [key: string]: string
-    }
+    } | null
     language: string | null
     level: {
       hypixel: number | null
       bedwars: number | null
-      skywars: number
+      skywars: number | null
     }
   }
   error: string | null
@@ -24,17 +24,17 @@ export interface UserStatsProps {
 export const DEFAULT_VALUE: UserStatsProps = {
   player: {
     name: null,
-    oldNames: [],
+    oldNames: null,
     uuid: null
   },
   data: {
     version: null,
-    socialMedia: {},
+    socialMedia: null,
     language: null,
     level: {
       hypixel: null,
       bedwars: null,
-      skywars: 0
+      skywars: null
     }
   },
   error: null

@@ -2,11 +2,12 @@ import { Container, ErrorWrapper, ErrorMessage, ErrorTitle, ErrorSpinnerWrapper,
 
 export interface ErrorProps {
   error: string
+  rainbow?: boolean
 }
 
-const Error = ({ error }: ErrorProps): JSX.Element => {
+const Error = ({ error, rainbow }: ErrorProps): JSX.Element => {
   return (
-    <Container>
+    <Container rainbow={rainbow}>
       <ErrorSpinnerWrapper>
         <ErrorSpinner />
       </ErrorSpinnerWrapper>

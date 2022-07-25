@@ -1,4 +1,4 @@
-import { LevelImage } from "./style"
+import { LevelImage } from './style'
 
 export interface IconProps {
   alt: string

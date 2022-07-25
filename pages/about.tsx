@@ -1,10 +1,11 @@
 import { NextPage } from 'next'
 
-import { Container, Title, A } from '../components/help/style'
+import { A } from '../components/global'
+import { Container, Title } from '../components/about/style'
 import Layout from '../components/layout'
 
 const Help: NextPage = () => (
-  <Layout>
+  <Layout title={'About'}>
     <Container>
       <Title>Welcome to MC Game Stats.</Title>
       <span>You can look up Hypixel players{'\''} stats with MC Game Stats.</span>

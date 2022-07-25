@@ -3,7 +3,7 @@ import { maxWidth } from '../global'
 
 export const Container = styled.div`
 display: grid;
-justify-content: center;
+justify-content: left;
 align-items: center;
 grid-template-columns: 1fr 1fr;
 gap: 20px;
@@ -12,7 +12,7 @@ gap: 20px;
   & {
     grid-template-columns: unset;
     grid-template-rows: 400px 400px;
-    padding: 10px 20px;
+    padding: 50px;
     height: auto;
   }
 }

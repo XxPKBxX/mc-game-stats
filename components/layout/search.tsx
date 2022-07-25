@@ -3,7 +3,7 @@ import { useUserContext } from '../../contexts/user'
 import { useRouter } from 'next/router'
 import { clearSpecialCharacters } from '../../utils/text'
 
-import { SearchInput, SearchSubmit, SearchWrapper } from './style'
+import { SearchInput, IconButton, SearchWrapper } from './style'
 
 export interface SearchProps {
   setLoading: Function
@@ -11,7 +11,7 @@ export interface SearchProps {
 
 const Search = ({ setLoading }: SearchProps): JSX.Element => {
   const { player: { name } } = useUserContext()
-  const [query, setQuery] = useState<string>(name ?? '')
+  const [query, setQuery] = useState<string>('')
   const searchInputRef = useRef<HTMLInputElement>(null)
 
   const focus = (e: KeyboardEvent) => {
@@ -45,9 +45,12 @@ const Search = ({ setLoading }: SearchProps): JSX.Element => {
       type={'search'}
       value={query}
       onChange={(e) => setQuery(clearSpecialCharacters(e.target.value))}
-      placeholder={'Search User'}
+      placeholder={name ?? 'Search User'}
       required />
-      <SearchSubmit />
+      <IconButton
+      aria-label={'Search'}
+      type={'submit'}
+      icon={'/assets/icon/search.svg'} />
     </SearchWrapper>
   )
 }

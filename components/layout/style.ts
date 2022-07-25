@@ -1,9 +1,9 @@
-import styled from 'styled-components'
-import { iconStyles, inputStyles, maxWidth } from '../global'
+import styled, { css } from 'styled-components'
+import { iconStyles, inputStyles } from '../global'
 
 export const Body = styled.div`
 display: grid;
-grid-template-rows: minmax(500px, 1fr);
+grid-template-rows: minmax(max(100vh, 500px), 1fr) auto;
 
 width: 100%;
 min-height: 100vh;
@@ -33,7 +33,7 @@ opacity: 0;
 pointer-events: none;
 transition: opacity 0.2s var(--animation-ease);
 
-${(props: LoadingProps) => props.active ? `
+${(props: LoadingProps) => props.active ? css`
 opacity: 1;
 pointer-events: auto;
 ` : null}
@@ -75,24 +75,19 @@ gap: 20px;
 align-items: center;
 
 width: 100%;
-height: 100px;
+height: 80px;
 
-background-image: linear-gradient(
-  to bottom,
-  black,
-  transparent
-);
+background-color: var(--c-background-color);
 
-padding: 30px;
+padding: 30px 30px 10px 30px;
 `
 
 export const Navbar = styled.div`
-display: grid;
+display: flex;
 gap: 20px;
-grid-template-columns: auto 1fr auto;
 
 width: 100%;
-max-width: 350px;
+max-width: 400px;
 height: 100%;
 `
 
@@ -100,6 +95,8 @@ export interface IconButtonProps {
   icon: string
 }
 export const IconButton = styled.button`
+${inputStyles}
+
 display: flex;
 justify-content: center;
 align-items: center;
@@ -119,9 +116,6 @@ height: 100%;
 aspect-ratio: 1 / 1;
 
 cursor: pointer;
-
-transition: opacity 0.2s var(--animation-ease);
-&:hover { opacity: 0.8; }
 `
 
 export const SearchWrapper = styled.form`
@@ -138,17 +132,38 @@ ${inputStyles}
 display: block;
 
 width: 100%;
+min-width: 50px;
 `
 
-export const SearchSubmit = styled.button`
-${inputStyles}
+export const FooterWrapper = styled.footer`
+display: flex;
+gap: 10px;
+
+padding: 20px 30px;
+
+background-color: var(--c-footer-background-color);
+color: var(--c-footer-text-color);
+`
+
+export const FooterLink = styled.a`
+position: relative;
 
 display: block;
 
 cursor: pointer;
 
-aspect-ratio: 1 / 1;
+&::after {
+  content: '';
 
-${iconStyles}
-background-image: url('/assets/icon/search.svg');
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  display: block;
+
+  width: 100%;
+  height: 1px;
+
+  background-color: var(--c-footer-text-color);
+}
 `

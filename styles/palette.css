@@ -6,34 +6,59 @@
   --c-gray: rgb(30, 30, 30);
   --c-accent: rgb(182, 255, 93);
 
+  /* Rainbow */
+  --c-red: rgb(255, 103, 103);
+  --c-orange: rgb(255, 197, 88);
+  --c-green: rgb(186, 255, 140);
+  --c-blue: rgb(109, 167, 249);
+  --c-purple: rgb(196, 135, 244);
+
   --z-top-bar: 15;
 
+  --c-button-background-color: rgb(30, 30, 30);
+
   /* Back Button */
-  --c-back-button-background-color: var(--c-gray);
+  --c-back-button-background-color: var(--c-button-background-color);
   --c-back-button-text-color: white;
 
   /* Click Anywhere */
-  --c-ca-text-color: rgb(80, 80, 80);
+  --c-ca-text-color: rgb(120, 120, 120);
   --z-ca: 5;
-
-  /* Error */
-  --c-error-spinner-background-color: white;
   
   /* Loading */
   --c-loading-background-color: rgba(0, 0, 0, 0.8);
-  --c-loading-spin-color: white;
+  --c-loading-spin-color: var(--c-text-color);
   --z-loading: 10;
 
   /* Nickname Input */
-  --c-input-background-color: var(--c-gray);
+  --c-input-background-color: var(--c-button-background-color);
   --c-input-text-color: white;
   --c-input-outline-color: rgba(255, 255, 255, 0.2);
   
   /* Nickname History */
-  --c-history-background-color: var(--c-gray);
+  --c-history-background-color: var(--c-button-background-color);
   --c-history-text-color: white;
-  --c-history-scrollbar-background-color: rgb(100, 100, 100);
 
   /* Links */
   --c-link-text-color: var(--c-accent);
+
+  /* History */
+  --c-history-dot-background-color: var(--c-accent);
+  --c-history-bar-background-color: var(--c-gray);
+
+  /* Footer */
+  --c-footer-background-color: var(--c-gray);
+  --c-footer-text-color: rgb(150, 150, 150);
 }
+
+/* @media screen and (prefers-color-scheme: light) {
+  :root {
+    --c-background-color: white;
+    --c-text-color: black;
+  
+    --c-gray: rgb(230, 230, 230);
+    --c-accent: rgb(96, 158, 20);
+    
+    --c-loading-background-color: rgba(255, 255, 255, 0.8);
+  }
+} */

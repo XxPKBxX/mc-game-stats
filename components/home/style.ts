@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import { iconStyles, inputStyles } from '../global'
 
 export const Container = styled.div`
+position: relative;
+
 display: flex;
 justify-content: center;
 align-items: center;
@@ -27,6 +29,7 @@ export const NicknameInput = styled.input`
 ${inputStyles}
 
 background-color: transparent;
+color: var(--c-text-color);
 
 display: block;
 
