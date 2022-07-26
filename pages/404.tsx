@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 
-import Error from '../components/users/Error'
+import Error from '../components/error'
 import Layout from '../components/layout'
 
 const NotFound: NextPage = () => (

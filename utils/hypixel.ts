@@ -27,3 +27,42 @@ export const getSkyWarsLevel = (experience: number): number => {
 
   return 0
 }
+
+interface SocialMediaFormatter {
+  [key: string]: string
+}
+const SOCIAL_MEDIA_FORMATTER: SocialMediaFormatter = {
+  'TWITTER': 'Twitter',
+  'YOUTUBE': 'YouTube',
+  'INSTAGRAM': 'Instagram',
+  'TWITCH': 'Twitch',
+  'HYPIXEL': 'Hypixel',
+  // 'DISCORD': 'Discord',
+  // 'MIXER': 'Mixer'
+}
+
+export interface SocialMedia {
+  name: string
+  url: string
+}
+
+export interface SocialMediaDraft {
+  [key: string]: string
+}
+
+export const getSocialMedia = (socialMedia: SocialMediaDraft): SocialMedia[] => {
+  const result = []
+
+  for (const key in socialMedia) {
+    const name = SOCIAL_MEDIA_FORMATTER[key as keyof SocialMediaFormatter]
+    if (!name) continue
+    
+    const data: SocialMedia = {
+      name,
+      url: socialMedia[key]
+    }
+    result.push(data)
+  }
+
+  return result
+}

@@ -2,6 +2,13 @@ import styled, { css } from 'styled-components'
 
 export const maxWidth = '880px'
 
+export const outlineStyles = css`
+outline: 0px solid var(--c-input-outline-color);
+transition: outline 0.2s ease;
+&:hover { outline-width: 3px; }
+&:focus { outline-width: 5px; }
+`
+
 export const inputStyles = css`
 padding: 10px;
 border: none;
@@ -10,10 +17,7 @@ border-radius: 10px;
 background-color: var(--c-input-background-color);
 color: var(--c-input-text-color);
 
-outline: 0px solid var(--c-input-outline-color);
-transition: outline 0.2s ease;
-&:hover { outline-width: 3px; }
-&:focus { outline-width: 5px; }
+${outlineStyles}
 `
 
 export const iconStyles = css`
@@ -30,6 +34,8 @@ display: inline-block;
 color: var(--c-link-text-color);
 
 cursor: pointer;
+
+border-radius: 5px;
 
 &::after {
   content: '';
@@ -50,5 +56,5 @@ cursor: pointer;
   
   transition: height 0.2s var(--animation-ease);
 }
-&:hover::after { height: 7px; }
+&:where(:hover, :focus)::after { height: 7px; }
 `

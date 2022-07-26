@@ -46,6 +46,7 @@ const Search = ({ setLoading }: SearchProps): JSX.Element => {
       value={query}
       onChange={(e) => setQuery(clearSpecialCharacters(e.target.value))}
       placeholder={name ?? 'Search User'}
+      autoFocus
       required />
       <IconButton
       aria-label={'Search'}

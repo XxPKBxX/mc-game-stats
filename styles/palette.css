@@ -9,11 +9,11 @@
   /* Rainbow */
   --c-red: rgb(255, 103, 103);
   --c-orange: rgb(255, 197, 88);
-  --c-green: rgb(186, 255, 140);
+  --c-green: var(--c-accent);
   --c-blue: rgb(109, 167, 249);
   --c-purple: rgb(196, 135, 244);
 
-  --z-top-bar: 15;
+  --z-top-bar: 20;
 
   --c-button-background-color: rgb(30, 30, 30);
 
@@ -33,7 +33,7 @@
   /* Nickname Input */
   --c-input-background-color: var(--c-button-background-color);
   --c-input-text-color: white;
-  --c-input-outline-color: rgba(255, 255, 255, 0.2);
+  --c-input-outline-color: rgba(255, 255, 255, 0.4);
   
   /* Nickname History */
   --c-history-background-color: var(--c-button-background-color);
@@ -51,7 +51,7 @@
   --c-footer-text-color: rgb(150, 150, 150);
 }
 
-/* @media screen and (prefers-color-scheme: light) {
+@media screen and (prefers-color-scheme: light) {
   :root {
     --c-background-color: white;
     --c-text-color: black;
@@ -60,5 +60,9 @@
     --c-accent: rgb(96, 158, 20);
     
     --c-loading-background-color: rgba(255, 255, 255, 0.8);
+    
+    --c-input-outline-color: rgba(0, 0, 0, 0.4);
+    
+    --c-footer-text-color: rgb(80, 80, 80);
   }
-} */
+}

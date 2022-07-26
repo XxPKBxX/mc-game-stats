@@ -3,7 +3,7 @@ import { iconStyles, inputStyles } from '../global'
 
 export const Body = styled.div`
 display: grid;
-grid-template-rows: minmax(max(100vh, 500px), 1fr) auto;
+grid-template-rows: minmax(500px, 1fr) auto;
 
 width: 100%;
 min-height: 100vh;

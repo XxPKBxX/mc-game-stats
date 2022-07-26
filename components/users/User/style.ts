@@ -1,5 +1,6 @@
 import Image from 'next/image'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { outlineStyles } from '../../global'
 
 export const UserInfo = styled.div`
 display: grid;
@@ -37,7 +38,7 @@ export const NicknameWrapper = styled.span`
 position: relative;
 
 display: grid;
-gap: 10px;
+gap: 15px;
 grid-template-columns: auto auto;
 align-items: center;
 
@@ -47,20 +48,56 @@ font-weight: bold;
 padding: 5px;
 `
 
-export const NicknameText = styled.span`
+export interface NicknameTextProps {
+  online: boolean
+}
+
+export const NicknameText = styled.a`
 position: relative;
 
 display: block;
+
+cursor: pointer;
+
+border-radius: 5px;
+
+${outlineStyles}
+
+&::-webkit-scrollbar { display: none; }
+
+&::after {
+  content: '';
+
+  position: absolute;
+  top: 0;
+  left: 100%;
+
+  display: block;
+
+  width: 10px;
+  height: 10px;
+
+  border-radius: 100%;
+
+  background-color: ${(props: NicknameTextProps) => props.online ? 'var(--c-green)' : 'var(--c-red)'};
+}
 `
 
+export interface NicknameHistoryProps {
+  shown: boolean
+}
+
 export const NicknameHistory = styled.div`
-transition: 0.2s var(--animation-ease);
-transition-property: opacity, transform;
+position: absolute;
+top: 100%;
+left: 0;
+z-index: 1;
 
 font-size: 1rem;
 font-weight: normal;
 
 display: grid;
+align-content: flex-start;
 
 border-radius: 5px;
 margin: 5px;
@@ -68,8 +105,17 @@ margin: 5px;
 background-color: var(--c-history-background-color);
 color: var(--c-history-text-color);
 
-max-height: 170px;
+max-height: 100px;
 overflow-y: scroll;
+
+opacity: 0;
+pointer-events: none;
+transition: 0.2s var(--animation-ease);
+
+${(props: NicknameHistoryProps) => props.shown ? css`
+opacity: 1;
+pointer-events: auto;
+` : null}
 
 & > span {
   display: block;
@@ -91,5 +137,9 @@ display: block;
 
 & > tbody > tr > th {
   text-align: right;
+}
+& > tbody > tr > td {
+  display: flex;
+  gap: 5px;
 }
 `

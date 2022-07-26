@@ -1,16 +1,16 @@
 import { createContext, useContext } from 'react'
+import { SocialMedia } from '../utils/hypixel'
 
 export interface UserStatsProps {
   player: {
     name: string | null
     oldNames: string[] | null
     uuid: string | null
+    online: boolean
   }
   data: {
     version: string | null
-    socialMedia: {
-      [key: string]: string
-    } | null
+    socialMedia: SocialMedia[] | null
     language: string | null
     level: {
       hypixel: number | null
@@ -25,7 +25,8 @@ export const DEFAULT_VALUE: UserStatsProps = {
   player: {
     name: null,
     oldNames: null,
-    uuid: null
+    uuid: null,
+    online: false
   },
   data: {
     version: null,

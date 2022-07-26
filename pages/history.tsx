@@ -26,7 +26,7 @@ const History: NextPage = () => {
 
       setHistory(historyData)
     }
-    catch {}
+    catch { clear() }
   }, [])
   
   const clear = () => {

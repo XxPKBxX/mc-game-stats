@@ -20,6 +20,7 @@ ${(props: ContainerProps) => props.rainbow ? css`
 animation: rainbow-animation 3s 0s infinite forwards linear;
 ` : null}
 
+@media screen and (prefers-reduced-motion: reduce) { animation: none; }
 @keyframes rainbow-animation {
   0%, 100% { --color: var(--c-red); }
   20% { --color: var(--c-orange); }
@@ -49,6 +50,8 @@ border-radius: 3px;
 background-color: var(--color);
 
 animation: spin-animation 2s 0s infinite forwards var(--animation-ease);
+
+@media screen and (prefers-reduced-motion: reduce) { animation: none; }
 
 @keyframes spin-animation {
   0% {

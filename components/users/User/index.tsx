@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useUserContext } from '../../../contexts/user'
 import { History, historyItemName } from '../../../utils/history'
+import { A } from '../../global'
 
 import Nickname from './nickname'
 import { InfoWrapper, Table, UserInfo } from './style'
@@ -43,9 +44,18 @@ const User = (): JSX.Element => {
               <th>Language</th>
               <td>{data.data.language ?? '-'}</td>
             </tr>
+            <tr>
+              <th>Social Media</th>
+              <td>{
+                data.data.socialMedia?.map((sns, index) => (
+                    <A href={sns.url} target={'_blank'} key={index}>{sns.name}</A>
+                )) ?? '-'
+              }</td>
+            </tr>
           </tbody>
         </Table>
       </InfoWrapper>
+      {/* <textarea value={JSON.stringify(data, null, 4)} readOnly /> */}
     </UserInfo>
   )
 }

@@ -1,13 +1,14 @@
 import dynamic from 'next/dynamic'
 import type { GetServerSideProps, NextPage } from 'next'
 import { Container } from '../../components/users/style'
-import { getHypixelLevel, getSkyWarsLevel } from '../../utils/hypixel'
+import { getHypixelLevel, getSkyWarsLevel, getSocialMedia } from '../../utils/hypixel'
 import { UserContext, DEFAULT_VALUE, UserStatsProps } from '../../contexts/user'
 
 import Layout from '../../components/layout'
 import User from '../../components/users/User'
 import Level from '../../components/users/Level'
-const Error = dynamic(() => import('../../components/users/Error'))
+import { clearSpecialCharacters } from '../../utils/text'
+const Error = dynamic(() => import('../../components/error'))
 
 const UserStats: NextPage<{ data: UserStatsProps }> = ({ data }) => (
   data.error ? (
@@ -30,6 +31,11 @@ const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1
 
 export const getServerSideProps: GetServerSideProps = async ({ query: { nickname } }) => {
   const data: UserStatsProps = { ...DEFAULT_VALUE }
+
+  // Check Nickname
+  if (typeof nickname !== 'string'
+  || clearSpecialCharacters(nickname) !== nickname) return { props: { data: { ...data, error: 'Nicknames can only contain alphabets, numbers, and underscores(_).' } } }
+
 
   // Fetch UUID
   const uuidResponse = await fetch(`https://api.mojang.com/users/profiles/minecraft/${nickname}`)
@@ -66,7 +72,9 @@ export const getServerSideProps: GetServerSideProps = async ({ query: { nickname
     socialMedia,
     userLanguage,
     stats,
-    achievements
+    achievements,
+    lastLogin,
+    lastLogout
   } = player
 
   if (!knownAliases || knownAliases.length < 1) return { props: { data: { ...data, error: 'User data is broken.' } } }
@@ -77,6 +85,11 @@ export const getServerSideProps: GetServerSideProps = async ({ query: { nickname
   const hypixelLevel = getHypixelLevel(networkExp)
   const skyWarsLevel = skywars_experience ? getSkyWarsLevel(skywars_experience) : 0
 
+  const sns = socialMedia?.links ?? null
+  const socialMediaList = sns ? getSocialMedia(sns) : null
+
+  const online = Boolean(lastLogin) && Boolean(lastLogout) && lastLogin > lastLogout
+
   return {
     props: {
       data: {
@@ -84,11 +97,12 @@ export const getServerSideProps: GetServerSideProps = async ({ query: { nickname
         player: {
           name: displayname ?? null,
           oldNames: knownAliases ?? null,
-          uuid: id
+          uuid: id,
+          online
         },
         data: {
           version: mcVersionRp ?? null,
-          socialMedia: socialMedia ?? null,
+          socialMedia: socialMediaList && socialMediaList.length > 0 ? socialMediaList : null,
           language: userLanguage ? capitalize(userLanguage) : null,
           level: {
             hypixel: hypixelLevel ?? null,

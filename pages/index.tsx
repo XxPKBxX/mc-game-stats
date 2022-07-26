@@ -33,6 +33,7 @@ const Home: NextPage = () => {
           value={nickname}
           ref={ref}
           required
+          autoFocus
           onChange={(e) => setNickname(clearSpecialCharacters(e.target.value))} />
           <Search type={'submit'} aria-label={'Search'} />
         </Form>
