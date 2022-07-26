@@ -88,7 +88,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query: { nickname
   const sns = socialMedia?.links ?? null
   const socialMediaList = sns ? getSocialMedia(sns) : null
 
-  const online = Boolean(lastLogin) && Boolean(lastLogout) && lastLogin > lastLogout
+  const online = Boolean(lastLogin) && Boolean(lastLogout) ? lastLogin > lastLogout : null
 
   return {
     props: {

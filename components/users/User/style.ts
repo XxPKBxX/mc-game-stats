@@ -49,7 +49,7 @@ padding: 5px;
 `
 
 export interface NicknameTextProps {
-  online: boolean
+  online: boolean | null
 }
 
 export const NicknameText = styled.a`
@@ -65,6 +65,7 @@ ${outlineStyles}
 
 &::-webkit-scrollbar { display: none; }
 
+${(props: NicknameTextProps) => props.online !== null ? css`
 &::after {
   content: '';
 
@@ -79,8 +80,9 @@ ${outlineStyles}
 
   border-radius: 100%;
 
-  background-color: ${(props: NicknameTextProps) => props.online ? 'var(--c-green)' : 'var(--c-red)'};
+  background-color: ${props.online ? 'var(--c-green)' : 'var(--c-red)'};
 }
+` : null}
 `
 
 export interface NicknameHistoryProps {

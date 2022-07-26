@@ -6,7 +6,7 @@ export interface UserStatsProps {
     name: string | null
     oldNames: string[] | null
     uuid: string | null
-    online: boolean
+    online: boolean | null
   }
   data: {
     version: string | null
@@ -26,7 +26,7 @@ export const DEFAULT_VALUE: UserStatsProps = {
     name: null,
     oldNames: null,
     uuid: null,
-    online: false
+    online: null
   },
   data: {
     version: null,
