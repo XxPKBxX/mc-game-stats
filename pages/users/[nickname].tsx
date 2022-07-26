@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic'
 import type { GetServerSideProps, NextPage } from 'next'
-import { Container } from '../../components/users/style'
+import { Wrapper, Container } from '../../components/users/style'
 import { getHypixelLevel, getSkyWarsLevel, getSocialMedia } from '../../utils/hypixel'
 import { UserContext, DEFAULT_VALUE, UserStatsProps } from '../../contexts/user'
 
@@ -18,10 +18,12 @@ const UserStats: NextPage<{ data: UserStatsProps }> = ({ data }) => (
   ) : (
     <UserContext.Provider value={data}>
       <Layout title={data?.player?.name ?? undefined}>
-        <Container>
-          <User />
-          <Level />
-        </Container>
+        <Wrapper>
+          <Container>
+            <User />
+            <Level />
+          </Container>
+        </Wrapper>
       </Layout>
     </UserContext.Provider>
   )

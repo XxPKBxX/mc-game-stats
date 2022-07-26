@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
-import { useState, FormEvent, useRef } from 'react'
+import { useState, FormEvent, useRef, useEffect } from 'react'
 import { clearSpecialCharacters } from '../utils/text'
 
 import Layout from '../components/layout'
@@ -20,12 +20,13 @@ const Home: NextPage = () => {
   }
 
   const ref = useRef<HTMLInputElement>(null)
+  useEffect(() => ref.current?.focus(), [])
 
   return (
     <Layout loading={loading}>
       <Container
       onClick={() => ref.current?.focus()}>
-        <ClickAnywhere>You can click anywhere to search or press /.</ClickAnywhere>
+        <ClickAnywhere>You can click anywhere or press / to search.</ClickAnywhere>
         <Form onSubmit={submit}>
           <NicknameInput
           placeholder={'Nickname'}

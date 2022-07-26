@@ -4,7 +4,7 @@ import styled from 'styled-components'
 export const LevelInfo = styled.div`
 display: grid;
 gap: 20px;
-justify-content: left;
+justify-content: center;
 `
 
 export const LevelSection = styled.section`

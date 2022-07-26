@@ -6,7 +6,7 @@ export const UserInfo = styled.div`
 display: grid;
 gap: 20px;
 grid-template-rows: auto auto;
-justify-content: left;
+justify-items: center;
 align-items: center;
 
 text-align: left;
