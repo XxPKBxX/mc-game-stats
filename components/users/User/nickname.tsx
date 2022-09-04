@@ -6,12 +6,12 @@ import { NameWrapper, NicknameWrapper, NicknameHistory, PlayerAvatarWrapper, Nic
 const Nickname = (): JSX.Element => {
   const data = useUserContext()
 
-  const [showHistory, setShowHistory] = useState<boolean>(false)
+  // const [showHistory, setShowHistory] = useState<boolean>(false)
 
-  const reveal = () => setShowHistory(!showHistory)
-  const revealKey = (e: KeyboardEvent) => {
-    if (e.key === 'Enter') reveal()
-  }
+  // const reveal = () => setShowHistory(!showHistory)
+  // const revealKey = (e: KeyboardEvent) => {
+  //   if (e.key === 'Enter') reveal()
+  // }
 
   return (
     <NameWrapper>
@@ -25,17 +25,17 @@ const Nickname = (): JSX.Element => {
       <NicknameWrapper>
         <NicknameText
         online={data.player.online}
-        aria-label={'Click to reveal'}
-        tabIndex={0}
-        onClick={reveal}
-        onKeyDown={revealKey}>{data.player.name}</NicknameText>
-        <NicknameHistory shown={showHistory}>
+        // aria-label={'Click to reveal'}
+        // onClick={reveal}
+        // onKeyDown={revealKey}
+        tabIndex={0}>{data.player.name}</NicknameText>
+        {/* <NicknameHistory shown={showHistory}>
           {
             data.player.oldNames?.map((oldNickname, index) => (
               <span key={index}>{oldNickname}</span>
             ))
           }
-        </NicknameHistory>
+        </NicknameHistory> */}
       </NicknameWrapper>
     </NameWrapper>
   )

@@ -68,7 +68,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query: { nickname
   
   const {
     displayname,
-    knownAliases,
+    // knownAliases,
     mcVersionRp,
     networkExp,
     socialMedia,
@@ -79,7 +79,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query: { nickname
     lastLogout
   } = player
 
-  if (!knownAliases || knownAliases.length < 1) return { props: { data: { ...data, error: 'User data is broken.' } } }
+  // Known Aliases isn't support now
+  // if (!knownAliases || knownAliases.length < 1) return { props: { data: { ...data, error: 'User data is broken. Please open an issue on GitHub if the problem persists.' } } }
 
   const skywars_experience = stats?.SkyWars?.skywars_experience ?? null
   const bedwars_level = achievements?.bedwars_level ?? 0
@@ -98,7 +99,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query: { nickname
         ...data,
         player: {
           name: displayname ?? null,
-          oldNames: knownAliases ?? null,
+          // oldNames: knownAliases ?? null,
           uuid: id,
           online
         },

@@ -52,6 +52,10 @@ const User = (): JSX.Element => {
                 )) ?? '-'
               }</td>
             </tr>
+            {/* <tr>
+              <th>UUID</th>
+              <td>{data.player.uuid ?? '-'}</td>
+            </tr> */}
           </tbody>
         </Table>
       </InfoWrapper>

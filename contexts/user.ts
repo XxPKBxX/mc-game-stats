@@ -4,7 +4,7 @@ import { SocialMedia } from '../utils/hypixel'
 export interface UserStatsProps {
   player: {
     name: string | null
-    oldNames: string[] | null
+    // oldNames: string[] | null
     uuid: string | null
     online: boolean | null
   }
@@ -24,7 +24,7 @@ export interface UserStatsProps {
 export const DEFAULT_VALUE: UserStatsProps = {
   player: {
     name: null,
-    oldNames: null,
+    // oldNames: null,
     uuid: null,
     online: null
   },

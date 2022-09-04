@@ -52,18 +52,18 @@ export interface NicknameTextProps {
   online: boolean | null
 }
 
-export const NicknameText = styled.a`
+export const NicknameText = styled.span`
 position: relative;
 
 display: block;
 
-cursor: pointer;
+/* cursor: pointer; */
 
 border-radius: 5px;
 
-${outlineStyles}
+/* ${outlineStyles} */
 
-&::-webkit-scrollbar { display: none; }
+/* &::-webkit-scrollbar { display: none; } */
 
 ${(props: NicknameTextProps) => props.online !== null ? css`
 &::after {
